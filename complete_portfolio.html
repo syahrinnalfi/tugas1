@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Saya</title>
+  <!-- Menyertakan Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #007bff; /* Warna biru */
+      color: white; /* Teks putih */
+    }
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+  <script>
+    function gantiFoto(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("foto").src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+
+    function gantiFotoProyek(event, proyekId) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("foto-proyek-" + proyekId).src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+
+    function ubahDetailProyek(proyekId) {
+      const namaProyek = prompt("Masukkan nama proyek baru:");
+      const deskripsiProyek = prompt("Masukkan deskripsi proyek baru:");
+
+      if (namaProyek && deskripsiProyek) {
+        document.getElementById("nama-proyek-" + proyekId).textContent = namaProyek;
+        document.getElementById("deskripsi-proyek-" + proyekId).textContent = deskripsiProyek;
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center">Portofolio Saya</h1>
+
+    <!-- Foto Profil -->
+    <div class="text-center">
+      <img id="foto" src="https://via.placeholder.com/150" class="profile-image" alt="Foto Profil">
+      <br>
+      <input type="file" class="form-control-file d-block mx-auto" onchange="gantiFoto(event)" />
+    </div>
+
+    <!-- Nama -->
+    <p id="nama" class="text-center" style="font-size: 2.5rem;">Nama: Alfi Syahrin</p>
+
+    <h2 style="font-size: 2rem; font-weight: bold;">Pengalaman Kerja</h2>
+    <ul>
+      <li style="font-size: 1.5rem; margin-bottom: 10px;">Vaporista Di Nyovapor.AMT</li>
+    </ul>
+
+    <!-- Proyek -->
+    <h2>Proyek</h2>
+    <div class="row">
+      <!-- Proyek 1 -->
+      <div class="col-sm-4">
+        <div class="card">
+          <img id="foto-proyek-1" src="https://via.placeholder.com/150" class="card-img-top project-image" alt="Project 1">
+          <div class="card-body">
+            <h5 id="nama-proyek-1" class="card-title">Project 1</h5>
+            <p id="deskripsi-proyek-1" class="card-text">Deskripsi singkat tentang project 1.</p>
+            <button class="btn btn-warning" onclick="ubahDetailProyek(1)">Ubah Detail Proyek</button>
+            <input type="file" class="form-control-file mt-2" onchange="gantiFotoProyek(event, 1)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyek 2 -->
+      <div class="col-sm-4">
+        <div class="card">
+          <img id="foto-proyek-2" src="https://via.placeholder.com/150" class="card-img-top project-image" alt="Project 2">
+          <div class="card-body">
+            <h5 id="nama-proyek-2" class="card-title">Project 2</h5>
+            <p id="deskripsi-proyek-2" class="card-text">Deskripsi singkat tentang project 2.</p>
+            <button class="btn btn-warning" onclick="ubahDetailProyek(2)">Ubah Detail Proyek</button>
+            <input type="file" class="form-control-file mt-2" onchange="gantiFotoProyek(event, 2)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyek 3 -->
+      <div class="col-sm-4">
+        <div class="card">
+          <img id="foto-proyek-3" src="https://via.placeholder.com/150" class="card-img-top project-image" alt="Project 3">
+          <div class="card-body">
+            <h5 id="nama-proyek-3" class="card-title">Project 3</h5>
+            <p id="deskripsi-proyek-3" class="card-text">Deskripsi singkat tentang project 3.</p>
+            <button class="btn btn-warning" onclick="ubahDetailProyek(3)">Ubah Detail Proyek</button>
+            <input type="file" class="form-control-file mt-2" onchange="gantiFotoProyek(event, 3)" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
